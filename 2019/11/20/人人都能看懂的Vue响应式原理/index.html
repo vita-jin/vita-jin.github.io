@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="这里是vita-jin的记录站。各种乱七八糟的记录，比起大佬的技术博客，这里也许更像bbs时代的博客。 不过先来记录一下个人博客的搭建过程，教程写的真好。 参考教程1 参考教程2">
+<meta name="description" content="人人都能看懂的Vue响应式原理 Vue 最独特的特性之一，是其非侵入性的响应式系统。  众所周知，Vue的数据双向绑定给前端工作人员带来了极大的便捷。响应式系统使得开发人员只需要关注数据而无需手动控制dom来操作视图。当数据 data1 改变时，Vue会帮助我们更改视图中所有的 data1及依赖于 data1 的数据 data2，data3等。这里依赖的意思指的是要想知道 data2 的值需要经过">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello_World">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;15&#x2F;Hello-World-0&#x2F;index.html">
+<meta property="og:title" content="人人都能看懂的Vue响应式原理">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%83%BD%E7%9C%8B%E6%87%82%E7%9A%84Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86&#x2F;index.html">
 <meta property="og:site_name" content="Vita-jin的blog">
-<meta property="og:description" content="这里是vita-jin的记录站。各种乱七八糟的记录，比起大佬的技术博客，这里也许更像bbs时代的博客。 不过先来记录一下个人博客的搭建过程，教程写的真好。 参考教程1 参考教程2">
+<meta property="og:description" content="人人都能看懂的Vue响应式原理 Vue 最独特的特性之一，是其非侵入性的响应式系统。  众所周知，Vue的数据双向绑定给前端工作人员带来了极大的便捷。响应式系统使得开发人员只需要关注数据而无需手动控制dom来操作视图。当数据 data1 改变时，Vue会帮助我们更改视图中所有的 data1及依赖于 data1 的数据 data2，data3等。这里依赖的意思指的是要想知道 data2 的值需要经过">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-15T07:21:15.230Z">
+<meta property="og:updated_time" content="2019-11-29T02:29:09.488Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -117,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/15/Hello-World-0/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/11/20/人人都能看懂的Vue响应式原理/"/>
 
 
 
 
 
-  <title>Hello_World | Vita-jin的blog</title>
+  <title>人人都能看懂的Vue响应式原理 | Vita-jin的blog</title>
   
 
 
@@ -230,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/15/Hello-World-0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/20/%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%83%BD%E7%9C%8B%E6%87%82%E7%9A%84Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vita-jin">
@@ -247,7 +247,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello_World</h1>
+          <h1 class="post-title" itemprop="name headline">人人都能看懂的Vue响应式原理</h1>
         
 
         <div class="post-meta">
@@ -259,8 +259,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-15T15:13:01+08:00">
-                2019-11-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-20T21:45:38+08:00">
+                2019-11-20
               </time>
             
 
@@ -297,10 +297,58 @@
       
 
       
-        <p>这里是vita-jin的记录站。各种乱七八糟的记录，比起大佬的技术博客，这里也许更像bbs时代的博客。</p>
-<p>不过先来记录一下个人博客的搭建过程，教程写的真好。</p>
-<p><a href="https://juejin.im/entry/5a574864f265da3e3c6c1217" target="_blank" rel="noopener">参考教程1</a></p>
-<p><a href="https://juejin.im/post/5dc7ea17518825607c0de8a7" target="_blank" rel="noopener">参考教程2</a></p>
+        <h1 id="人人都能看懂的Vue响应式原理"><a href="#人人都能看懂的Vue响应式原理" class="headerlink" title="人人都能看懂的Vue响应式原理"></a>人人都能看懂的Vue响应式原理</h1><blockquote>
+<p>Vue 最独特的特性之一，是其非侵入性的响应式系统。</p>
+</blockquote>
+<p>众所周知，Vue的数据双向绑定给前端工作人员带来了极大的便捷。响应式系统使得开发人员<strong>只需要关注数据而无需手动控制dom来操作视图</strong>。当数据 <code>data1</code> 改变时，Vue会帮助我们更改视图中所有的 <code>data1</code>及依赖于 <code>data1</code> 的数据 <code>data2</code>，<code>data3</code>等。这里依赖的意思指的是要想知道 <code>data2</code> 的值需要经过 <code>data1</code> 。例如：<code>data2 = data1* 10</code></p>
+<p>那么在这个无比顺滑的过程中，Vue内部是如何做到的呢？</p>
+<p><strong>答案是：</strong></p>
+<ol>
+<li>数据拦截/数据代理</li>
+<li>依赖收集</li>
+<li>发布订阅</li>
+</ol>
+<p>翻译成<strong>人话</strong>就是：</p>
+<ol>
+<li>监听数据变化（假定为 <code>data1</code>）</li>
+<li>收集页面中哪些数据是依赖于该数据的（即收集 <code>data2</code> 这种依赖于 <code>data1</code> 的数据）</li>
+<li>当数据变化时，通知视图修改所有相关数据（即修改 <code>data1</code> 与 <code>data2</code> ）</li>
+</ol>
+<p>那么，这个过程具体是如何实现的呢？</p>
+<blockquote>
+<h2 id="数据拦截-数据代理"><a href="#数据拦截-数据代理" class="headerlink" title="数据拦截/数据代理"></a>数据拦截/数据代理</h2></blockquote>
+<p>在JavaScript中侦察到一个对象的变化，有两种方法： <code>Object.defineProperty</code> ，ES6中的 <code>proxy</code> 。</p>
+<ul>
+<li><p><code>Object.defineProperty</code></p>
+<p>  当你把一个普通的 <code>JavaScript</code> 对象传入 <code>Vue</code> 实例作为 <code>data</code> 选项，Vue 将<strong>遍历此对象所有的属性</strong>（如果属性仍是一个对象则递归这个过程），并使用 <code>Object.defineProperty</code> 把这些属性全部转为 <code>getter/setter</code></p>
+<p>  乍听起来，设置属性为<code>getter/setter</code>好像并没有特殊之处，但是仔细想想，每次获取数据，修改数据都需要经过这个方法，在这个方法中我们就可以做很多我们想要的操作了。比如在<code>setter/getter</code>方法中alert一个 <code>big brother is watch you</code>。即，<code>getter/setter</code>实现了数据拦截/数据代理</p>
+<p>  前置知识： </p>
+<ol>
+<li><p><code>getter/setter</code> 的目的在于将<strong>对象的属性封装为方法</strong>，避免了直接访问属性所带来的安全性问题，所有获取数据或更改数据都要通过<code>getter/setter</code>方法来实现。这种方法在Java中很常见。详见<a href="https://lotabout.me/2018/QQA-why-use-getters-and-setters/" target="_blank" rel="noopener">这里</a></p>
+</li>
+<li><p><code>Object.defineProperty</code>能够在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。详见<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="noopener">这里</a></p>
+<p>注意点：</p>
+</li>
+<li><p>由于Vue在初始化实例的时候才执行 <code>setter/getter</code> ，所以无法检测到对象属性的添加或删除，如何需要可以使用全局方法 <code>Vue.set</code></p>
+</li>
+<li><p>由于 JavaScript 的限制，Vue 不能检测数组的变动</p>
+</li>
+<li><p>Vue3.0将要采用 <code>proxy</code> 来代替 <code>Object.defineProperty</code></p>
+</li>
+<li><p>当我们设置 <code>vm.someDate = value</code> 时，视图并不会立马进行渲染。这样的后果是：如果在重新赋值后取值，可能会取到渲染前的值。解决：使用 <code>Vue.nextTick(callback)</code> ，在回调函数中执行对更新后的dom的操作 。</p>
+</li>
+</ol>
+</li>
+<li><p><code>proxy</code></p>
+<p>  相较于<code>Object.defineProperty</code>遍历对象的每个属性的做法，<code>proxy</code>只需要做一层代理就可以监听同级结构下的所有属性变化</p>
+<blockquote>
+<h3 id="依赖收集"><a href="#依赖收集" class="headerlink" title="依赖收集"></a>依赖收集</h3></blockquote>
+</li>
+</ul>
+<p>如何进行依赖收集？如何找出依赖于 <code>data1</code> 的所有 <code>data2</code> ？</p>
+<p>核心： <strong>每个组件实例</strong>都对应一个 watcher 实例，它会在组件渲染的过程中把“接触”过的数据属性记录为依赖。之后当依赖项的 setter 触发时，会通知 watcher，从而使它关联的组件重新渲染。即可以想象成每个组件实例都有一个watcher，把“接触”过的数据属性记录为依赖的过程可以想象成组件记录下这个watcher，将该watcher收集<strong>collect</strong>到本组件中的一个数组中，这样才能实现当依赖项发生变化，通知watcher？？？？？？</p>
+<p>一个属性可能有多个依赖，每个响应式数据都有一个Dep来管理它的依赖</p>
+<p>首先介绍两个概念： Dep 订阅者， watcher 观察者</p>
 
       
     </div>
@@ -325,8 +373,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/15/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/11/15/Hello-World-0/" rel="next" title="Hello_World">
+                <i class="fa fa-chevron-left"></i> Hello_World
               </a>
             
           </div>
@@ -335,8 +383,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/20/%E4%BA%BA%E4%BA%BA%E9%83%BD%E8%83%BD%E7%9C%8B%E6%87%82%E7%9A%84Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" rel="prev" title="人人都能看懂的Vue响应式原理">
-                人人都能看懂的Vue响应式原理 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/01/Vue%20mastery%E7%BF%BB%E8%AF%91/" rel="prev" title="建立一个响应式系统">
+                建立一个响应式系统 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -389,8 +437,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -450,6 +507,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#人人都能看懂的Vue响应式原理"><span class="nav-number">1.</span> <span class="nav-text">人人都能看懂的Vue响应式原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据拦截-数据代理"><span class="nav-number">1.1.</span> <span class="nav-text">数据拦截/数据代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖收集"><span class="nav-number">1.1.1.</span> <span class="nav-text">依赖收集</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
