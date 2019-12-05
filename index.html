@@ -557,7 +557,7 @@
             <h1 id="人人都能看懂的Vue响应式原理"><a href="#人人都能看懂的Vue响应式原理" class="headerlink" title="人人都能看懂的Vue响应式原理"></a>人人都能看懂的Vue响应式原理</h1><blockquote>
 <p>Vue 最独特的特性之一，是其非侵入性的响应式系统。</p>
 </blockquote>
-<p>众所周知，Vue的数据双向绑定给前端工作人员带来了极大的便捷。响应式系统使得开发人员<strong>只需要关注数据而无需手动控制dom来操作视图</strong>。当数据 <code>data1</code> 改变时，Vue会帮助我们更改视图中所有的 <code>data1</code>及依赖于 <code>data1</code> 的数据 <code>data2</code>，<code>data3</code>等。这里依赖的意思指的是要想知道 <code>data2</code> 的值需要经过 <code>data1</code> 。例如：<code>data2 = data1* 10</code></p>
+<p>众所周知，Vue的数据双向绑定给前端工作人员带来了极大的便捷。响应式系统使得开发人员<strong>只需要关注数据而无需手动控制dom来操作视图</strong>。假设 <code>total = x * y</code>当数据 <code>x</code> 改变时，Vue会帮助我们更改视图中所有的 <code>x</code> 及 <code>total</code> 等。</p>
 <p>那么在这个无比顺滑的过程中，Vue内部是如何做到的呢？</p>
 <p><strong>答案是：</strong></p>
 <ol>
@@ -567,9 +567,13 @@
 </ol>
 <p>翻译成<strong>人话</strong>就是：</p>
 <ol>
-<li>监听数据变化（假定为 <code>data1</code>）</li>
-<li>收集页面中哪些数据是依赖于该数据的（即收集 <code>data2</code> 这种依赖于 <code>data1</code> 的数据）</li>
-<li>当数据变化时，通知视图修改所有相关数据（即修改 <code>data1</code> 与 <code>data2</code> ）</li>
+<li><p>监听数据变化（假定为 <code>x</code>）</p>
+</li>
+<li><p>收集页面中该数据的依赖（即收集 <code>total</code> 这种会随着 <code>x</code> 的变化而变化的数据）</p>
+<p> 在这里先介绍一个概念，也是初学者刚开始最为模糊的一个概念：依赖。你可以把它看作一个名词，忽略掉它中文中的指向性。在我们上述的例子中， <code>total</code> 是 <code>x</code> 的依赖，<code>total</code> 也是 <code>y</code> 的依赖。<code>x</code> 和 <code>y</code> 也可能有其他很多的依赖。</p>
+</li>
+<li><p>当数据变化时，通知视图修改所有相关数据（即修改 <code>x</code> 与 <code>total</code> ）</p>
+</li>
 </ol>
 <p>那么，这个过程具体是如何实现的呢？</p>
 <blockquote>
@@ -586,7 +590,7 @@
 <li><p><code>Object.defineProperty</code>能够在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。详见<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="noopener">这里</a></p>
 <p>注意点：</p>
 </li>
-<li><p>由于Vue在初始化实例的时候才执行 <code>setter/getter</code> ，所以无法检测到对象属性的添加或删除，如何需要可以使用全局方法 <code>Vue.set</code></p>
+<li><p>由于Vue在初始化实例的时候才执行 <code>setter/getter</code> ，所以无法检测到对象属性的<strong>添加或删除</strong>，如何需要可以使用全局方法 <code>Vue.set</code></p>
 </li>
 <li><p>由于 JavaScript 的限制，Vue 不能检测数组的变动</p>
 </li>
@@ -602,10 +606,14 @@
 <h3 id="依赖收集"><a href="#依赖收集" class="headerlink" title="依赖收集"></a>依赖收集</h3></blockquote>
 </li>
 </ul>
-<p>如何进行依赖收集？如何找出依赖于 <code>data1</code> 的所有 <code>data2</code> ？</p>
-<p>核心： <strong>每个组件实例</strong>都对应一个 watcher 实例，它会在组件渲染的过程中把“接触”过的数据属性记录为依赖。之后当依赖项的 setter 触发时，会通知 watcher，从而使它关联的组件重新渲染。即可以想象成每个组件实例都有一个watcher，把“接触”过的数据属性记录为依赖的过程可以想象成组件记录下这个watcher，将该watcher收集<strong>collect</strong>到本组件中的一个数组中，这样才能实现当依赖项发生变化，通知watcher？？？？？？</p>
-<p>一个属性可能有多个依赖，每个响应式数据都有一个Dep来管理它的依赖</p>
-<p>首先介绍两个概念： Dep 订阅者， watcher 观察者</p>
+<p>如何进行依赖收集？如何找出 <code>x</code> 的所有依赖 <code>total</code> ？</p>
+<p>首先介绍两个概念： Dep ， watcher 。</p>
+<p><strong>Dep</strong> ：观察者容器，即存储观察者的地方。每一个具有响应式的属性都具有一个 <code>dep</code> 实例，里面存放着观察者对象。</p>
+<p><strong>Watcher</strong> : 观察者，在观察者类内部中包含一个将自己加入到dep的方法与一个更新方法。</p>
+<p>每个响应式数据都有自己的一个 <code>dep</code> 实例，由于上一步 <code>getter/setter</code> 的存在，当 <code>total</code> 需要使用 <code>x</code> 的时候，调用 <code>x</code> 触发 getter，在 getter 中会调用 <code>dep.depend</code> 以收集观察者，即将 <code>total</code>（依赖）的<code>watcher</code>添加到 <code>x</code> 的订阅者数组中。当 <code>x</code> 更新后，由于上一步 getter/setter 的存在，在setter中调用 <code>dep.notify</code> 以通知所有保存的 <code>watcher</code> 去更新数据及视图。</p>
+<p>整个过程即为发布订阅。</p>
+<p><strong>总结：</strong></p>
+<p>假设一个场景，我们所订阅的<strong>每一份信息都可以看作是一个响应式属性</strong>，该信息被很多人订阅。所以<strong>该信息自己保存着一个 dep</strong>。当我需要这份信息的时候，获取该信息并触发getter。该信息就<strong>将我加入它的dep</strong>中，即 dep 里面保留着各种像我一样的订阅者。当该信息更新后，它<strong>通知dep中所有的订阅者</strong>也包括我。当我收到这份通知的时候，我就会在所有我用到该信息的地方更新。</p>
 
           
         
